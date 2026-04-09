@@ -2,21 +2,7 @@ import KpiCard from './components/KpiCard'
 import WeeklyNotes from './components/WeeklyNotes'
 import TrendPlaceholder from './components/TrendPlaceholder'
 import StepsBlock from './components/StepsBlock'
-
-const stats = [
-  { label: 'Poids actuel', value: '84.2', unit: 'kg' },
-  { label: 'Évolution 7j', value: '-0.6', unit: 'kg' },
-  { label: 'Séances semaine', value: '4', unit: '/ 5' },
-  { label: 'Tonnage semaine', value: '12 400', unit: 'kg' },
-  { label: 'Calories moyennes', value: '2 850', unit: 'kcal' },
-  { label: 'Protéines moyennes', value: '178', unit: 'g' },
-]
-
-const notes = [
-  'Semaine solide — 4 séances tenues malgré le déplacement mercredi.',
-  'Protéines légèrement en dessous de la cible sur 2 jours : corriger le repas du soir.',
-  'Poids en baisse régulière depuis 3 semaines — maintenir le déficit actuel.',
-]
+import { dashboardStats, dashboardSteps, weeklyNotes } from '../lib/data/dashboard'
 
 export default function Dashboard() {
   return (
@@ -24,7 +10,7 @@ export default function Dashboard() {
       <h1 className="text-xl font-semibold text-white">Dashboard</h1>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        {stats.map((s) => (
+        {dashboardStats.map((s) => (
           <KpiCard key={s.label} label={s.label} value={s.value} unit={s.unit} />
         ))}
       </div>
@@ -34,9 +20,9 @@ export default function Dashboard() {
         <TrendPlaceholder label="Tonnage hebdomadaire" />
       </div>
 
-      <StepsBlock stepsDuJour={8340} moyenne7j={9100} />
+      <StepsBlock stepsDuJour={dashboardSteps.today} moyenne7j={dashboardSteps.avg7j} />
 
-      <WeeklyNotes notes={notes} />
+      <WeeklyNotes notes={weeklyNotes} />
     </div>
   )
 }
