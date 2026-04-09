@@ -3,9 +3,18 @@ import SectionHeader from './SectionHeader'
 type Props = {
   depense: number
   apport: number
+  steps: number
 }
 
-export default function CheckResult({ depense, apport }: Props) {
+export default function CheckResult({ depense, apport, steps }: Props) {
+  const stepsLabel =
+    steps >= 10_000
+      ? 'Activité quotidienne élevée via steps.'
+      : steps >= 6_000
+      ? 'Activité modérée via steps.'
+      : steps > 0
+      ? 'Activité faible — pense à marcher davantage demain.'
+      : null
   const deficit = apport - depense
   const absDeficit = Math.abs(deficit)
 
@@ -74,6 +83,9 @@ export default function CheckResult({ depense, apport }: Props) {
         {lines.map((l, i) => (
           <p key={i} className="text-sm text-gray-300">{l}</p>
         ))}
+        {stepsLabel && (
+          <p className="text-sm text-gray-500 pt-1">{stepsLabel}</p>
+        )}
       </div>
     </div>
   )

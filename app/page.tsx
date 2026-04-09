@@ -1,6 +1,7 @@
 import KpiCard from './components/KpiCard'
 import WeeklyNotes from './components/WeeklyNotes'
 import TrendPlaceholder from './components/TrendPlaceholder'
+import StepsBlock from './components/StepsBlock'
 
 const stats = [
   { label: 'Poids actuel', value: '84.2', unit: 'kg' },
@@ -9,8 +10,6 @@ const stats = [
   { label: 'Tonnage semaine', value: '12 400', unit: 'kg' },
   { label: 'Calories moyennes', value: '2 850', unit: 'kcal' },
   { label: 'Protéines moyennes', value: '178', unit: 'g' },
-  { label: "Steps aujourd'hui", value: '8 340', unit: 'pas' },
-  { label: 'Moyenne steps', value: '9 100', unit: 'pas/j' },
 ]
 
 const notes = [
@@ -34,6 +33,8 @@ export default function Dashboard() {
         <TrendPlaceholder label="Évolution du poids" />
         <TrendPlaceholder label="Tonnage hebdomadaire" />
       </div>
+
+      <StepsBlock stepsDuJour={8340} moyenne7j={9100} />
 
       <WeeklyNotes notes={notes} />
     </div>

@@ -222,7 +222,7 @@ export default function Check() {
         </button>
       </form>
 
-      {result && <CheckResult depense={result.depense} apport={result.apport} />}
+      {result && <CheckResult depense={result.depense} apport={result.apport} steps={Number(steps) || 0} />}
     </div>
   )
 }
