@@ -2,7 +2,7 @@ import SectionHeader from './SectionHeader'
 
 type Session = {
   label: string
-  score: number // 1-5
+  score: number
   note: string
 }
 
@@ -10,17 +10,9 @@ type Props = {
   sessions: Session[]
 }
 
-const dots = (score: number) =>
-  Array.from({ length: 5 }, (_, i) => (
-    <span
-      key={i}
-      className={`inline-block w-2 h-2 rounded-full ${i < score ? 'bg-white' : 'bg-gray-700'}`}
-    />
-  ))
-
 export default function SessionQuality({ sessions }: Props) {
   return (
-    <div className="bg-gray-900 rounded-xl px-5 py-5">
+    <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
       <div className="mb-4">
         <SectionHeader title="Qualité de séance" />
       </div>
@@ -28,10 +20,19 @@ export default function SessionQuality({ sessions }: Props) {
         {sessions.map((s, i) => (
           <li key={i}>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-sm text-gray-300">{s.label}</span>
-              <div className="flex gap-1">{dots(s.score)}</div>
+              <span className="text-sm text-[#e8eaf0]">{s.label}</span>
+              <div className="flex gap-1">
+                {Array.from({ length: 5 }, (_, j) => (
+                  <span
+                    key={j}
+                    className={`inline-block w-1.5 h-4 rounded-sm ${
+                      j < s.score ? 'bg-yellow-400' : 'bg-[#1c2e4a]'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
-            <p className="text-xs text-gray-500">{s.note}</p>
+            <p className="text-xs text-[#4a5872]">{s.note}</p>
           </li>
         ))}
       </ul>

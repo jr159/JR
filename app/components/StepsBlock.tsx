@@ -10,41 +10,43 @@ type Props = {
 export default function StepsBlock({ stepsDuJour, moyenne7j }: Props) {
   const ecart = stepsDuJour - OBJECTIF
   const ecartStr = `${ecart >= 0 ? '+' : ''}${ecart.toLocaleString('fr-FR')}`
-  const ecartColor = ecart >= 0 ? 'text-green-400' : 'text-red-400'
   const barPct = Math.min(Math.round((stepsDuJour / OBJECTIF) * 100), 100)
+  const atteint = ecart >= 0
 
   return (
-    <div className="bg-gray-900 rounded-xl px-5 py-5 space-y-4">
-      <SectionHeader title="Steps" />
+    <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
+      <div className="mb-5">
+        <SectionHeader title="Steps" />
+      </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-5">
         <div>
-          <p className="text-xs text-gray-500 mb-1">Aujourd'hui</p>
-          <p className="text-xl font-bold text-white">{stepsDuJour.toLocaleString('fr-FR')}</p>
+          <p className="text-xs text-[#8892a4] mb-1">Aujourd'hui</p>
+          <p className="text-xl font-bold text-yellow-400">{stepsDuJour.toLocaleString('fr-FR')}</p>
         </div>
         <div>
-          <p className="text-xs text-gray-500 mb-1">Moyenne 7j</p>
-          <p className="text-xl font-bold text-white">{moyenne7j.toLocaleString('fr-FR')}</p>
+          <p className="text-xs text-[#8892a4] mb-1">Moyenne 7j</p>
+          <p className="text-xl font-bold text-[#e8eaf0]">{moyenne7j.toLocaleString('fr-FR')}</p>
         </div>
         <div>
-          <p className="text-xs text-gray-500 mb-1">Objectif</p>
-          <p className="text-xl font-bold text-white">{OBJECTIF.toLocaleString('fr-FR')}</p>
+          <p className="text-xs text-[#8892a4] mb-1">Objectif</p>
+          <p className="text-xl font-bold text-[#e8eaf0]">{OBJECTIF.toLocaleString('fr-FR')}</p>
         </div>
         <div>
-          <p className="text-xs text-gray-500 mb-1">Écart</p>
-          <p className={`text-xl font-bold ${ecartColor}`}>{ecartStr}</p>
+          <p className="text-xs text-[#8892a4] mb-1">Écart</p>
+          <p className={`text-xl font-bold ${atteint ? 'text-yellow-400' : 'text-[#8892a4]'}`}>{ecartStr}</p>
         </div>
       </div>
 
       <div>
-        <div className="flex justify-between text-xs text-gray-600 mb-1">
+        <div className="flex justify-between text-[10px] text-[#4a5872] mb-1.5">
           <span>0</span>
           <span>{OBJECTIF.toLocaleString('fr-FR')} pas</span>
         </div>
-        <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+        <div className="h-1.5 bg-[#07090f] rounded-full overflow-hidden border border-[#1c2e4a]">
           <div
-            className={`h-full rounded-full ${barPct >= 100 ? 'bg-green-500' : 'bg-gray-500'}`}
-            style={{ width: `${barPct}%` }}
+            className="h-full rounded-full transition-all duration-500 bg-yellow-400"
+            style={{ width: `${barPct}%`, opacity: atteint ? 1 : 0.5 }}
           />
         </div>
       </div>

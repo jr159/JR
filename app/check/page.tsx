@@ -13,14 +13,14 @@ const Field = ({
   label: string
   children: React.ReactNode
 }) => (
-  <div className="flex flex-col gap-1">
-    <label className="text-xs text-gray-500">{label}</label>
+  <div className="flex flex-col gap-1.5">
+    <label className="text-xs text-[#8892a4] font-medium">{label}</label>
     {children}
   </div>
 )
 
 const inputCls =
-  'bg-gray-800 text-white text-sm rounded-lg px-3 py-2 border border-gray-700 focus:outline-none focus:border-gray-500 w-full'
+  'bg-[#07090f] text-[#e8eaf0] text-sm rounded-xl px-3 py-2.5 border border-[#1c2e4a] focus:outline-none focus:border-yellow-400/50 w-full transition-colors'
 
 const Toggle = ({
   value,
@@ -37,8 +37,10 @@ const Toggle = ({
           key={opt}
           type="button"
           onClick={() => onChange(opt === 'Oui')}
-          className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-            active ? 'bg-white text-gray-900' : 'bg-gray-800 text-gray-400 hover:text-white'
+          className={`px-4 py-1.5 rounded-xl text-sm font-medium transition-all duration-200 border ${
+            active
+              ? 'bg-yellow-400 text-[#07090f] border-yellow-400'
+              : 'bg-[#07090f] text-[#8892a4] border-[#1c2e4a] hover:text-[#e8eaf0] hover:border-[#2a4060]'
           }`}
         >
           {opt}
@@ -63,8 +65,10 @@ const ScaleInput = ({
         key={n}
         type="button"
         onClick={() => onChange(n)}
-        className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${
-          value === n ? 'bg-white text-gray-900' : 'bg-gray-800 text-gray-400 hover:text-white'
+        className={`w-8 h-8 rounded-xl text-sm font-bold transition-all duration-200 border ${
+          value === n
+            ? 'bg-yellow-400 text-[#07090f] border-yellow-400'
+            : 'bg-[#07090f] text-[#8892a4] border-[#1c2e4a] hover:border-[#2a4060] hover:text-[#e8eaf0]'
         }`}
       >
         {n}
@@ -111,8 +115,8 @@ export default function Check() {
         className="space-y-6"
       >
         {/* Poids */}
-        <div className="bg-gray-900 rounded-xl px-5 py-5 space-y-4">
-          <p className="text-sm font-semibold text-gray-300">Corps</p>
+        <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 space-y-4 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
+          <p className="text-xs font-semibold text-[#8892a4] uppercase tracking-widest">Corps</p>
           <Field label="Poids (kg)">
             <input
               type="number"
@@ -126,8 +130,8 @@ export default function Check() {
         </div>
 
         {/* Activité */}
-        <div className="bg-gray-900 rounded-xl px-5 py-5 space-y-5">
-          <p className="text-sm font-semibold text-gray-300">Activité</p>
+        <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 space-y-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
+          <p className="text-xs font-semibold text-[#8892a4] uppercase tracking-widest">Activité</p>
 
           <Field label="Séance muscu ?">
             <Toggle value={muscu} onChange={setMuscu} />
@@ -186,8 +190,8 @@ export default function Check() {
         </div>
 
         {/* Nutrition */}
-        <div className="bg-gray-900 rounded-xl px-5 py-5 space-y-4">
-          <p className="text-sm font-semibold text-gray-300">Nutrition</p>
+        <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 space-y-4 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
+          <p className="text-xs font-semibold text-[#8892a4] uppercase tracking-widest">Nutrition</p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <Field label="Calories (kcal)">
               <input type="number" placeholder="2850" value={calories} onChange={(e) => setCalories(e.target.value)} className={inputCls} />
@@ -205,8 +209,8 @@ export default function Check() {
         </div>
 
         {/* Ressenti */}
-        <div className="bg-gray-900 rounded-xl px-5 py-5 space-y-4">
-          <p className="text-sm font-semibold text-gray-300">Ressenti</p>
+        <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 space-y-4 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
+          <p className="text-xs font-semibold text-[#8892a4] uppercase tracking-widest">Ressenti</p>
           <Field label="Fatigue (1 = aucune · 5 = épuisé)">
             <ScaleInput value={fatigue} onChange={setFatigue} />
           </Field>
@@ -217,7 +221,7 @@ export default function Check() {
 
         <button
           type="submit"
-          className="w-full bg-white text-gray-900 font-semibold text-sm py-3 rounded-xl hover:bg-gray-200 transition-colors"
+          className="w-full bg-yellow-400 text-[#07090f] font-bold text-sm py-3 rounded-2xl hover:bg-yellow-300 transition-all duration-200 tracking-wide"
         >
           Valider le check
         </button>

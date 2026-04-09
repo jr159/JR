@@ -7,6 +7,9 @@ type Props = {
 }
 
 export default function CheckResult({ depense, apport, steps }: Props) {
+  const deficit = apport - depense
+  const absDeficit = Math.abs(deficit)
+
   const stepsLabel =
     steps >= 10_000
       ? 'Activité quotidienne élevée via steps.'
@@ -15,8 +18,6 @@ export default function CheckResult({ depense, apport, steps }: Props) {
       : steps > 0
       ? 'Activité faible — pense à marcher davantage demain.'
       : null
-  const deficit = apport - depense
-  const absDeficit = Math.abs(deficit)
 
   let tag: string
   let tagColor: string
@@ -24,7 +25,7 @@ export default function CheckResult({ depense, apport, steps }: Props) {
 
   if (apport === 0) {
     tag = 'Données manquantes'
-    tagColor = 'text-gray-400'
+    tagColor = 'text-[#4a5872]'
     lines = ['Renseigne tes calories pour obtenir un feedback.']
   } else if (deficit < -600) {
     tag = 'Déficit élevé'
@@ -58,33 +59,33 @@ export default function CheckResult({ depense, apport, steps }: Props) {
   }
 
   return (
-    <div className="bg-gray-900 rounded-xl px-5 py-5 space-y-5">
+    <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)] space-y-5">
       <SectionHeader title="Résultat du soir" />
 
       <div className="grid grid-cols-3 gap-3">
-        <div className="bg-gray-800 rounded-lg px-4 py-3">
-          <p className="text-xs text-gray-500 mb-1">Dépense estimée</p>
-          <p className="text-lg font-bold text-white">{depense} kcal</p>
-        </div>
-        <div className="bg-gray-800 rounded-lg px-4 py-3">
-          <p className="text-xs text-gray-500 mb-1">Apport</p>
-          <p className="text-lg font-bold text-white">{apport > 0 ? `${apport} kcal` : '—'}</p>
-        </div>
-        <div className="bg-gray-800 rounded-lg px-4 py-3">
-          <p className="text-xs text-gray-500 mb-1">Bilan</p>
-          <p className={`text-lg font-bold ${apport === 0 ? 'text-gray-500' : deficit <= 0 ? 'text-green-400' : 'text-orange-400'}`}>
-            {apport === 0 ? '—' : `${deficit > 0 ? '+' : ''}${deficit} kcal`}
-          </p>
-        </div>
+        {[
+          { label: 'Dépense estimée', val: `${depense} kcal`, color: 'text-yellow-400' },
+          { label: 'Apport', val: apport > 0 ? `${apport} kcal` : '—', color: 'text-[#e8eaf0]' },
+          {
+            label: 'Bilan',
+            val: apport === 0 ? '—' : `${deficit > 0 ? '+' : ''}${deficit} kcal`,
+            color: apport === 0 ? 'text-[#4a5872]' : deficit <= 0 ? 'text-yellow-400' : 'text-orange-400',
+          },
+        ].map((item) => (
+          <div key={item.label} className="bg-[#07090f] border border-[#1c2e4a] rounded-xl px-4 py-3">
+            <p className="text-[10px] text-[#8892a4] mb-1 uppercase tracking-wide">{item.label}</p>
+            <p className={`text-base font-bold ${item.color}`}>{item.val}</p>
+          </div>
+        ))}
       </div>
 
-      <div className="border-l-2 border-gray-700 pl-4 space-y-1">
-        <p className={`text-xs font-semibold uppercase tracking-wide ${tagColor}`}>{tag}</p>
+      <div className="border-l-2 border-yellow-400/30 pl-4 space-y-1.5">
+        <p className={`text-xs font-semibold uppercase tracking-widest ${tagColor}`}>{tag}</p>
         {lines.map((l, i) => (
-          <p key={i} className="text-sm text-gray-300">{l}</p>
+          <p key={i} className="text-sm text-[#8892a4]">{l}</p>
         ))}
         {stepsLabel && (
-          <p className="text-sm text-gray-500 pt-1">{stepsLabel}</p>
+          <p className="text-xs text-[#4a5872] pt-1 italic">{stepsLabel}</p>
         )}
       </div>
     </div>

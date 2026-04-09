@@ -2,9 +2,9 @@ import SectionHeader from './SectionHeader'
 
 type Props = {
   calories: number
-  proteins: number   // g
-  carbs: number      // g
-  fats: number       // g
+  proteins: number
+  carbs: number
+  fats: number
 }
 
 export default function MacroBar({ calories, proteins, carbs, fats }: Props) {
@@ -16,21 +16,30 @@ export default function MacroBar({ calories, proteins, carbs, fats }: Props) {
   const pct = (n: number) => `${Math.round((n / total) * 100)}%`
 
   return (
-    <div className="bg-gray-900 rounded-xl px-5 py-5">
+    <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
       <div className="mb-4">
         <SectionHeader title="Répartition des macros" />
       </div>
-      <div className="flex rounded overflow-hidden h-5 mb-3">
-        <div className="bg-blue-500" style={{ width: pct(pCal) }} />
-        <div className="bg-yellow-500" style={{ width: pct(cCal) }} />
-        <div className="bg-orange-500" style={{ width: pct(fCal) }} />
+      <div className="flex rounded-lg overflow-hidden h-3 mb-4 gap-px">
+        <div className="bg-yellow-400 transition-all" style={{ width: pct(pCal) }} />
+        <div className="bg-blue-400 transition-all" style={{ width: pct(cCal) }} />
+        <div className="bg-[#4a5872] transition-all" style={{ width: pct(fCal) }} />
       </div>
-      <div className="flex gap-4 text-xs text-gray-400">
-        <span><span className="text-blue-400">●</span> Protéines {pct(pCal)}</span>
-        <span><span className="text-yellow-400">●</span> Glucides {pct(cCal)}</span>
-        <span><span className="text-orange-400">●</span> Lipides {pct(fCal)}</span>
+      <div className="flex gap-5 text-xs text-[#8892a4]">
+        <span className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-yellow-400 inline-block" />
+          Protéines {pct(pCal)}
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-blue-400 inline-block" />
+          Glucides {pct(cCal)}
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-[#4a5872] inline-block" />
+          Lipides {pct(fCal)}
+        </span>
       </div>
-      <p className="text-xs text-gray-600 mt-3">{calories} kcal/j en moyenne</p>
+      <p className="text-xs text-[#4a5872] mt-3">{calories} kcal/j en moyenne</p>
     </div>
   )
 }
