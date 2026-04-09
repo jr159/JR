@@ -1,11 +1,15 @@
 export const dashboardStats = [
-  { label: 'Poids actuel', value: '84.2', unit: 'kg' },
-  { label: 'Évolution 7j', value: '-0.6', unit: 'kg' },
   { label: 'Séances semaine', value: '4', unit: '/ 5' },
   { label: 'Tonnage semaine', value: '12 400', unit: 'kg' },
   { label: 'Calories moyennes', value: '2 850', unit: 'kcal' },
   { label: 'Protéines moyennes', value: '178', unit: 'g' },
 ]
+
+export const dashboardWeight = {
+  current: 84.2,
+  evolution7j: -0.6,
+  history7j: [85.0, 84.8, 84.7, 84.5, 84.6, 84.3, 84.2],
+}
 
 export const dashboardSteps = {
   today: 8340,
