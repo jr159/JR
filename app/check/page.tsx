@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import CheckResult from '../components/CheckResult'
 import PageHeader from '../components/PageHeader'
+import SectionHeader from '../components/SectionHeader'
 
 const muscuTypes = ['Push', 'Pull', 'Legs', 'Full body', 'Haut du corps', 'Bas du corps']
 
@@ -116,7 +117,7 @@ export default function Check() {
       >
         {/* Poids */}
         <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 space-y-4 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
-          <p className="text-xs font-semibold text-[#8892a4] uppercase tracking-widest">Corps</p>
+          <SectionHeader title="Corps" />
           <Field label="Poids (kg)">
             <input
               type="number"
@@ -131,7 +132,7 @@ export default function Check() {
 
         {/* Activité */}
         <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 space-y-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
-          <p className="text-xs font-semibold text-[#8892a4] uppercase tracking-widest">Activité</p>
+          <SectionHeader title="Activité" />
 
           <Field label="Séance muscu ?">
             <Toggle value={muscu} onChange={setMuscu} />
@@ -191,7 +192,7 @@ export default function Check() {
 
         {/* Nutrition */}
         <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 space-y-4 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
-          <p className="text-xs font-semibold text-[#8892a4] uppercase tracking-widest">Nutrition</p>
+          <SectionHeader title="Nutrition" />
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <Field label="Calories (kcal)">
               <input type="number" placeholder="2850" value={calories} onChange={(e) => setCalories(e.target.value)} className={inputCls} />
@@ -210,7 +211,7 @@ export default function Check() {
 
         {/* Ressenti */}
         <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 space-y-4 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
-          <p className="text-xs font-semibold text-[#8892a4] uppercase tracking-widest">Ressenti</p>
+          <SectionHeader title="Ressenti" />
           <Field label="Fatigue (1 = aucune · 5 = épuisé)">
             <ScaleInput value={fatigue} onChange={setFatigue} />
           </Field>

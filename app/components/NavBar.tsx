@@ -16,10 +16,16 @@ export default function NavBar() {
   const pathname = usePathname()
 
   return (
-    <nav className="bg-[#07090f] border-b border-[#1c2e4a] px-4 sm:px-6">
-      <div className="max-w-5xl mx-auto flex items-center h-14 gap-6 sm:gap-8">
-        <span className="text-yellow-400 font-bold text-base tracking-widest shrink-0 uppercase">JR</span>
-        <div className="flex items-center gap-1 overflow-x-auto">
+    <nav className="bg-[#07090f]/95 backdrop-blur-sm border-b border-[#1c2e4a] px-4 sm:px-6 sticky top-0 z-50">
+      <div className="max-w-5xl mx-auto flex items-center h-16 gap-4">
+
+        <span className="text-yellow-400 font-black text-sm tracking-[0.25em] shrink-0 uppercase select-none">
+          JR
+        </span>
+
+        <div className="w-px h-5 bg-[#1c2e4a] shrink-0" />
+
+        <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
           {navLinks.map((link) => {
             const active = pathname === link.href
             return (
@@ -27,17 +33,15 @@ export default function NavBar() {
                 key={link.href}
                 href={link.href}
                 className={`
-                  relative px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-all duration-200
+                  px-3 py-1.5 rounded-xl text-sm font-medium whitespace-nowrap
+                  transition-all duration-150 border
                   ${active
-                    ? 'text-yellow-400'
-                    : 'text-[#8892a4] hover:text-[#e8eaf0]'
+                    ? 'bg-yellow-400/10 text-yellow-400 border-yellow-400/25 font-semibold'
+                    : 'text-[#8892a4] border-transparent hover:text-[#c8cdd6] hover:bg-[#0d1526] hover:border-[#1c2e4a]'
                   }
                 `}
               >
                 {link.label}
-                {active && (
-                  <span className="absolute bottom-0 left-3 right-3 h-px bg-yellow-400 rounded-full" />
-                )}
               </Link>
             )
           })}

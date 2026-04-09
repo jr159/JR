@@ -3,6 +3,7 @@ import WeeklyNotes from './components/WeeklyNotes'
 import StepsBlock from './components/StepsBlock'
 import PageHeader from './components/PageHeader'
 import MiniSparkline from './components/MiniSparkline'
+import SectionDivider from './components/SectionDivider'
 import { dashboardStats, dashboardWeight, dashboardSteps, weeklyNotes } from '../lib/data/dashboard'
 
 const { current, evolution7j, history7j } = dashboardWeight
@@ -11,17 +12,6 @@ const evoColor = isDown ? 'text-green-400' : 'text-red-400'
 const evoSign = evolution7j > 0 ? '+' : ''
 
 const weekLabels = ['L', 'Ma', 'Me', 'J', 'V', 'Sa', 'D']
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex items-center gap-3">
-      <span className="text-xs font-semibold text-[#4a5872] uppercase tracking-widest whitespace-nowrap">
-        {children}
-      </span>
-      <div className="flex-1 h-px bg-[#1c2e4a]" />
-    </div>
-  )
-}
 
 export default function Dashboard() {
   return (
@@ -32,7 +22,7 @@ export default function Dashboard() {
           SECTION 1 — POIDS / ÉVOLUTION
       ───────────────────────────────────────────── */}
       <section className="space-y-4">
-        <SectionLabel>Poids & évolution</SectionLabel>
+        <SectionDivider>Poids & évolution</SectionDivider>
 
         <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl shadow-[0_4px_32px_rgba(0,0,0,0.5)] overflow-hidden">
           <div className="grid grid-cols-1 sm:grid-cols-5 divide-y sm:divide-y-0 sm:divide-x divide-[#1c2e4a]">
@@ -91,7 +81,7 @@ export default function Dashboard() {
           SECTION 2 — KPIs SEMAINE
       ───────────────────────────────────────────── */}
       <section className="space-y-4">
-        <SectionLabel>Performance semaine</SectionLabel>
+        <SectionDivider>Performance semaine</SectionDivider>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <KpiCard label="Séances" value={dashboardStats[0].value} unit={dashboardStats[0].unit} accent={false} />
           <KpiCard label="Tonnage" value={dashboardStats[1].value} unit={dashboardStats[1].unit} accent={false} />
@@ -104,7 +94,7 @@ export default function Dashboard() {
           SECTION 3 — ACTIVITÉ
       ───────────────────────────────────────────── */}
       <section className="space-y-4">
-        <SectionLabel>Activité quotidienne</SectionLabel>
+        <SectionDivider>Activité quotidienne</SectionDivider>
         <StepsBlock stepsDuJour={dashboardSteps.today} moyenne7j={dashboardSteps.avg7j} />
       </section>
 
@@ -112,7 +102,7 @@ export default function Dashboard() {
           SECTION 4 — BILAN
       ───────────────────────────────────────────── */}
       <section className="space-y-4">
-        <SectionLabel>Bilan de la semaine</SectionLabel>
+        <SectionDivider>Bilan de la semaine</SectionDivider>
         <WeeklyNotes notes={weeklyNotes} />
       </section>
 
