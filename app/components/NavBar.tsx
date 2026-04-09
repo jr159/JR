@@ -9,6 +9,7 @@ const navLinks = [
   { href: '/nutrition', label: 'Nutrition' },
   { href: '/check', label: 'Check' },
   { href: '/projection', label: 'Projection' },
+  { href: '/health', label: 'Health' },
 ]
 
 export default function NavBar() {
