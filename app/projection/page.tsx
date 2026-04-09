@@ -1,22 +1,22 @@
 import KpiCard from '../components/KpiCard'
-import ProjectionBlock from '../components/ProjectionBlock'
 import SectionHeader from '../components/SectionHeader'
+import PageHeader from '../components/PageHeader'
 import { projectionKpis, scenarioPrudent, scenarioRealiste, projectionComment } from '../../lib/data/projection'
 
 export default function Projection() {
   return (
     <div className="space-y-8">
-      <h1 className="text-xl font-semibold text-white">Projection</h1>
+      <PageHeader title="Projection" subtitle="Basé sur le déficit actuel" />
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {projectionKpis.map((k) => (
           <KpiCard key={k.label} label={k.label} value={k.value} unit={k.unit} />
         ))}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="bg-gray-900 rounded-xl px-5 py-5 space-y-4">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <SectionHeader title="Scénario prudent" />
             <span className="text-xs text-gray-600 bg-gray-800 px-2 py-0.5 rounded-full">−200 kcal/j</span>
           </div>
@@ -31,7 +31,7 @@ export default function Projection() {
         </div>
 
         <div className="bg-gray-900 rounded-xl px-5 py-5 space-y-4">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <SectionHeader title="Scénario réaliste" />
             <span className="text-xs text-gray-600 bg-gray-800 px-2 py-0.5 rounded-full">−400 kcal/j</span>
           </div>

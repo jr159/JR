@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import CheckResult from '../components/CheckResult'
+import PageHeader from '../components/PageHeader'
 
 const muscuTypes = ['Push', 'Pull', 'Legs', 'Full body', 'Haut du corps', 'Bas du corps']
 
@@ -100,7 +101,7 @@ export default function Check() {
 
   return (
     <div className="space-y-8">
-      <h1 className="text-xl font-semibold text-white">Check du soir</h1>
+      <PageHeader title="Check du soir" subtitle="Saisie quotidienne" />
 
       <form
         onSubmit={(e) => {

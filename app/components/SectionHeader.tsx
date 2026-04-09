@@ -3,5 +3,9 @@ type Props = {
 }
 
 export default function SectionHeader({ title }: Props) {
-  return <h2 className="text-sm font-semibold text-gray-300">{title}</h2>
+  return (
+    <h2 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+      {title}
+    </h2>
+  )
 }
