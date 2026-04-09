@@ -86,7 +86,17 @@ export default function Check() {
   const [lipides, setLipides] = useState('')
   const [fatigue, setFatigue] = useState(0)
   const [sommeil, setSommeil] = useState(0)
-  const [submitted, setSubmitted] = useState(false)
+  const [result, setResult] = useState<{ depense: number; apport: number } | null>(null)
+
+  function compute() {
+    const base = 2000
+    const muscuKcal = muscu ? Math.round((Number(muscuDuree) || 60) * 6) : 0
+    const lutteKcal = lutte ? Math.round((Number(lutteDuree) || 90) * 8) : 0
+    const stepsKcal = Math.round((Number(steps) || 0) * 0.04)
+    const depense = base + muscuKcal + lutteKcal + stepsKcal
+    const apport = Number(calories) || 0
+    return { depense, apport }
+  }
 
   return (
     <div className="space-y-8">
@@ -95,7 +105,7 @@ export default function Check() {
       <form
         onSubmit={(e) => {
           e.preventDefault()
-          setSubmitted(true)
+          setResult(compute())
         }}
         className="space-y-6"
       >
@@ -212,14 +222,7 @@ export default function Check() {
         </button>
       </form>
 
-      {submitted && (
-        <CheckResult
-          depense="3 210 kcal"
-          deficit="−360 kcal"
-          ajustement="Aucun"
-          commentaire="Bonne journée — déficit dans la cible, protéines au niveau. Si la fatigue reste élevée demain, pense à ajouter 200 kcal sur le repas post-séance."
-        />
-      )}
+      {result && <CheckResult depense={result.depense} apport={result.apport} />}
     </div>
   )
 }
