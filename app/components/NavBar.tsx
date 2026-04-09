@@ -8,6 +8,7 @@ const navLinks = [
   { href: '/training', label: 'Training' },
   { href: '/nutrition', label: 'Nutrition' },
   { href: '/check', label: 'Check' },
+  { href: '/projection', label: 'Projection' },
 ]
 
 export default function NavBar() {
