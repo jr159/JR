@@ -19,7 +19,7 @@ export default function Nutrition() {
         <div className="grid grid-cols-1 sm:grid-cols-5 divide-y sm:divide-y-0 sm:divide-x divide-[#1c2e4a]">
 
           {/* Calories — col 3/5 */}
-          <div className="sm:col-span-3 px-6 py-7 flex flex-col gap-5">
+          <div className="sm:col-span-3 px-6 py-7 flex flex-col gap-4">
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-xs font-semibold text-[#8892a4] uppercase tracking-widest mb-3">
@@ -29,11 +29,10 @@ export default function Nutrition() {
                   <span className="text-6xl font-bold text-yellow-400 tracking-tight leading-none">
                     {nutritionSummary.calories.toLocaleString('fr-FR')}
                   </span>
-                  <span className="text-xl text-[#4a5872]">/ {nutritionSummary.caloriesTarget.toLocaleString('fr-FR')}</span>
+                  <span className="text-xl text-[#4a5872]">/ {nutritionSummary.caloriesTarget.toLocaleString('fr-FR')} kcal</span>
                 </div>
-                <p className="text-xs text-[#4a5872] mt-1.5">kcal · objectif quotidien</p>
               </div>
-              <span className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 mt-1 ${
+              <span className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 ${
                 balance > 0
                   ? 'bg-orange-400/10 border border-orange-400/20 text-orange-400'
                   : 'bg-green-400/10 border border-green-400/20 text-green-400'
@@ -73,6 +72,19 @@ export default function Nutrition() {
         </div>
       </div>
 
+      {/* ── RÉPARTITION MACROS ────────────────────── */}
+      <section className="space-y-4">
+        <SectionDivider>Répartition macros</SectionDivider>
+        <MacroBar
+          proteins={nutritionSummary.proteins}
+          proteinsTarget={nutritionSummary.proteinsTarget}
+          carbs={nutritionSummary.carbs}
+          carbsTarget={nutritionSummary.carbsTarget}
+          fats={nutritionSummary.fats}
+          fatsTarget={nutritionSummary.fatsTarget}
+        />
+      </section>
+
       {/* ── INDICATEURS SECONDAIRES ───────────────── */}
       <section className="space-y-4">
         <SectionDivider>Indicateurs secondaires</SectionDivider>
@@ -81,20 +93,6 @@ export default function Nutrition() {
             <KpiCard key={s.label} label={s.label} value={s.value} unit={s.unit} accent={false} />
           ))}
         </div>
-      </section>
-
-      {/* ── RÉPARTITION MACROS ────────────────────── */}
-      <section className="space-y-4">
-        <SectionDivider>Répartition macros</SectionDivider>
-        <MacroBar
-          calories={nutritionSummary.calories}
-          proteins={nutritionSummary.proteins}
-          proteinsTarget={nutritionSummary.proteinsTarget}
-          carbs={nutritionSummary.carbs}
-          carbsTarget={nutritionSummary.carbsTarget}
-          fats={nutritionSummary.fats}
-          fatsTarget={nutritionSummary.fatsTarget}
-        />
       </section>
 
       {/* ── BILAN SEMAINE ─────────────────────────── */}

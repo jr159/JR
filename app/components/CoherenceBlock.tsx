@@ -23,7 +23,7 @@ export default function CoherenceBlock({ rows }: Props) {
       </div>
       <ul className="divide-y divide-[#1c2e4a]">
         {rows.map((r, i) => (
-          <li key={i} className="py-3 first:pt-1 last:pb-1">
+          <li key={i} className="py-3.5 first:pt-1 last:pb-1">
             <div className="flex items-start justify-between gap-3 mb-1">
               <span className="text-sm font-medium text-[#e8eaf0] leading-snug flex-1">{r.label}</span>
               <span
