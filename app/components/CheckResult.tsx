@@ -20,72 +20,82 @@ export default function CheckResult({ depense, apport, steps }: Props) {
       : null
 
   let tag: string
-  let tagColor: string
+  let tagBadge: string
+  let borderAccent: string
   let lines: string[]
 
   if (apport === 0) {
     tag = 'Données manquantes'
-    tagColor = 'text-[#4a5872]'
+    tagBadge = 'bg-[#1c2e4a] text-[#4a5872]'
+    borderAccent = 'border-[#1c2e4a]'
     lines = ['Renseigne tes calories pour obtenir un feedback.']
   } else if (deficit < -600) {
     tag = 'Déficit élevé'
-    tagColor = 'text-red-400'
+    tagBadge = 'bg-red-400/10 text-red-400 border border-red-400/20'
+    borderAccent = 'border-red-400/40'
     lines = [
+      `Déficit important détecté (−${absDeficit} kcal).`,
       'Ta journée est plus dépensière que prévu.',
-      `Ton déficit est élevé (−${absDeficit} kcal).`,
       'Ajoute environ 300 kcal ce soir (glucides + protéines).',
     ]
   } else if (deficit < -200) {
     tag = 'Déficit modéré'
-    tagColor = 'text-yellow-400'
+    tagBadge = 'bg-yellow-400/10 text-yellow-400 border border-yellow-400/20'
+    borderAccent = 'border-yellow-400/40'
     lines = [
       `Déficit de ${absDeficit} kcal — dans la cible.`,
       'Poids en bonne trajectoire si tu maintiens ce niveau.',
     ]
   } else if (deficit <= 100) {
     tag = 'Équilibre'
-    tagColor = 'text-green-400'
+    tagBadge = 'bg-green-400/10 text-green-400 border border-green-400/20'
+    borderAccent = 'border-green-400/40'
     lines = [
       'Journée bien calibrée.',
       'Apport et dépense sont proches. Rien à ajuster.',
     ]
   } else {
     tag = 'Surplus'
-    tagColor = 'text-orange-400'
+    tagBadge = 'bg-orange-400/10 text-orange-400 border border-orange-400/20'
+    borderAccent = 'border-orange-400/40'
     lines = [
-      `Tu es en surplus de ${deficit} kcal aujourd'hui.`,
+      `Surplus de ${deficit} kcal aujourd'hui.`,
       'Réduis les glucides au prochain repas ou augmente les steps demain.',
     ]
   }
 
   return (
-    <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)] space-y-5">
+    <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)] space-y-4">
       <SectionHeader title="Résultat du soir" />
 
       <div className="grid grid-cols-3 gap-3">
         {[
-          { label: 'Dépense estimée', val: `${depense} kcal`, color: 'text-yellow-400' },
+          { label: 'Dépense', val: `${depense} kcal`, color: 'text-yellow-400' },
           { label: 'Apport', val: apport > 0 ? `${apport} kcal` : '—', color: 'text-[#e8eaf0]' },
           {
             label: 'Bilan',
             val: apport === 0 ? '—' : `${deficit > 0 ? '+' : ''}${deficit} kcal`,
-            color: apport === 0 ? 'text-[#4a5872]' : deficit <= 0 ? 'text-yellow-400' : 'text-orange-400',
+            color: apport === 0 ? 'text-[#4a5872]' : deficit <= 0 ? 'text-green-400' : 'text-orange-400',
           },
         ].map((item) => (
-          <div key={item.label} className="bg-[#07090f] border border-[#1c2e4a] rounded-xl px-4 py-3">
-            <p className="text-[10px] text-[#8892a4] mb-1 uppercase tracking-wide">{item.label}</p>
-            <p className={`text-base font-bold ${item.color}`}>{item.val}</p>
+          <div key={item.label} className="bg-[#07090f] border border-[#1c2e4a] rounded-xl px-4 py-4">
+            <p className="text-[10px] text-[#8892a4] mb-1.5 uppercase tracking-wide">{item.label}</p>
+            <p className={`text-xl font-bold tabular-nums leading-none ${item.color}`}>{item.val}</p>
           </div>
         ))}
       </div>
 
-      <div className="border-l-2 border-yellow-400/30 pl-4 space-y-1.5">
-        <p className={`text-xs font-semibold uppercase tracking-widest ${tagColor}`}>{tag}</p>
+      <div className={`border-l-[3px] ${borderAccent} pl-4 space-y-2 py-0.5`}>
+        <span className={`inline-flex text-[10px] font-bold px-2.5 py-0.5 rounded-full ${tagBadge}`}>
+          {tag}
+        </span>
         {lines.map((l, i) => (
-          <p key={i} className="text-sm text-[#8892a4]">{l}</p>
+          <p key={i} className={`text-sm leading-relaxed ${i === 0 ? 'text-[#e8eaf0] font-medium' : 'text-[#8892a4]'}`}>
+            {l}
+          </p>
         ))}
         {stepsLabel && (
-          <p className="text-xs text-[#4a5872] pt-1 italic">{stepsLabel}</p>
+          <p className="text-xs text-[#4a5872] pt-0.5">{stepsLabel}</p>
         )}
       </div>
     </div>
