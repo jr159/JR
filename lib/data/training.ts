@@ -1,10 +1,16 @@
+export const trainingSummary = {
+  sessions: 4,
+  sessionsTarget: 5,
+  tonnage: '12 400',
+  tonnageMensuel: '48 200',
+  dureeMoyenne: '62',
+  sessionDays: [true, true, false, true, false, true, false], // L Ma Me J V Sa D
+}
+
 export const trainingStats = [
-  { label: 'Séances semaine', value: '4', unit: '/ 5' },
-  { label: 'Tonnage hebdo', value: '12 400', unit: 'kg' },
   { label: 'Tonnage mensuel', value: '48 200', unit: 'kg' },
   { label: 'Séries totales', value: '84', unit: 'séries' },
   { label: 'Reps totales', value: '1 020', unit: 'reps' },
-  { label: 'Durée moyenne', value: '62', unit: 'min' },
 ]
 
 export const recentRecords = [
@@ -30,3 +36,6 @@ export const tonnageWeek = [
   { label: 'Sa', value: 2800 },
   { label: 'D', value: 0 },
 ]
+
+export const weeklyFocus =
+  'Progression sur les dips lestés. Point à corriger : squat manque d\'énergie sur la séance Legs — envisager de la déplacer en début de semaine.'

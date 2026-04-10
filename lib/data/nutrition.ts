@@ -1,18 +1,19 @@
-export const nutritionStats = [
-  { label: 'Calories moyennes', value: '2 850', unit: 'kcal' },
-  { label: 'Protéines moyennes', value: '178', unit: 'g' },
-  { label: 'Glucides moyens', value: '310', unit: 'g' },
-  { label: 'Lipides moyens', value: '82', unit: 'g' },
-  { label: 'Objectif calories', value: '2 800', unit: 'kcal' },
-  { label: 'Écart objectif', value: '+50', unit: 'kcal' },
-]
-
-export const macros = {
+export const nutritionSummary = {
   calories: 2850,
+  caloriesTarget: 2800,
   proteins: 178,
+  proteinsTarget: 175,
   carbs: 310,
+  carbsTarget: 300,
   fats: 82,
+  fatsTarget: 80,
 }
+
+export const nutritionSecondary = [
+  { label: 'Hydratation', value: '2.4', unit: 'L / jour' },
+  { label: 'Fibres', value: '32', unit: 'g / jour' },
+  { label: 'Repas préparés', value: '5 / 7', unit: 'jours' },
+]
 
 export const nutritionProjections = [
   { label: 'Poids estimé dans 4 semaines', value: '83.0 kg' },
