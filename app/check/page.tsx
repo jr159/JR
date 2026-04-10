@@ -14,14 +14,14 @@ const Field = ({
   label: string
   children: React.ReactNode
 }) => (
-  <div className="flex flex-col gap-1.5">
-    <label className="text-xs text-[#8892a4] font-medium">{label}</label>
+  <div className="flex flex-col gap-2">
+    <label className="text-[11px] font-semibold text-[#8892a4] uppercase tracking-widest">{label}</label>
     {children}
   </div>
 )
 
 const inputCls =
-  'bg-[#07090f] text-[#e8eaf0] text-sm rounded-xl px-3 py-2.5 border border-[#1c2e4a] focus:outline-none focus:border-yellow-400/50 w-full transition-colors'
+  'bg-[#07090f] text-[#e8eaf0] text-sm rounded-xl px-3 py-3 border border-[#1c2e4a] focus:outline-none focus:border-yellow-400/50 w-full transition-colors placeholder:text-[#2a4060]'
 
 const Toggle = ({
   value,
@@ -38,7 +38,7 @@ const Toggle = ({
           key={opt}
           type="button"
           onClick={() => onChange(opt === 'Oui')}
-          className={`px-4 py-1.5 rounded-xl text-sm font-medium transition-all duration-200 border ${
+          className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 border ${
             active
               ? 'bg-yellow-400 text-[#07090f] border-yellow-400'
               : 'bg-[#07090f] text-[#8892a4] border-[#1c2e4a] hover:text-[#e8eaf0] hover:border-[#2a4060]'
@@ -66,7 +66,7 @@ const ScaleInput = ({
         key={n}
         type="button"
         onClick={() => onChange(n)}
-        className={`w-8 h-8 rounded-xl text-sm font-bold transition-all duration-200 border ${
+        className={`w-9 h-9 rounded-xl text-sm font-bold transition-all duration-200 border ${
           value === n
             ? 'bg-yellow-400 text-[#07090f] border-yellow-400'
             : 'bg-[#07090f] text-[#8892a4] border-[#1c2e4a] hover:border-[#2a4060] hover:text-[#e8eaf0]'
@@ -113,32 +113,38 @@ export default function Check() {
           e.preventDefault()
           setResult(compute())
         }}
-        className="space-y-6"
+        className="space-y-4"
       >
-        {/* Poids */}
-        <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 space-y-4 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
-          <SectionHeader title="Corps" />
-          <Field label="Poids (kg)">
-            <input
-              type="number"
-              step="0.1"
-              placeholder="84.2"
-              value={poids}
-              onChange={(e) => setPoids(e.target.value)}
-              className={inputCls + ' max-w-[120px]'}
-            />
-          </Field>
+        {/* Corps */}
+        <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-6 py-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
+          <div className="flex items-center justify-between gap-6">
+            <div>
+              <SectionHeader title="Corps" />
+              <p className="text-xs text-[#4a5872] mt-2">Poids du matin à jeun</p>
+            </div>
+            <div className="flex items-baseline gap-2 shrink-0">
+              <input
+                type="number"
+                step="0.1"
+                placeholder="84.2"
+                value={poids}
+                onChange={(e) => setPoids(e.target.value)}
+                className="bg-[#07090f] text-[#e8eaf0] text-2xl font-bold rounded-xl px-3 py-2 border border-[#1c2e4a] focus:outline-none focus:border-yellow-400/50 w-[108px] text-right transition-colors placeholder:text-[#1c2e4a] tabular-nums"
+              />
+              <span className="text-sm text-[#4a5872]">kg</span>
+            </div>
+          </div>
         </div>
 
         {/* Activité */}
-        <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 space-y-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
+        <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-6 py-6 space-y-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
           <SectionHeader title="Activité" />
 
           <Field label="Séance muscu ?">
             <Toggle value={muscu} onChange={setMuscu} />
           </Field>
           {muscu && (
-            <div className="grid grid-cols-2 gap-4 pl-0">
+            <div className="grid grid-cols-2 gap-4">
               <Field label="Type">
                 <select
                   value={muscuType}
@@ -166,7 +172,7 @@ export default function Check() {
             <Toggle value={lutte} onChange={setLutte} />
           </Field>
           {lutte && (
-            <div className="pl-0 max-w-[160px]">
+            <div className="max-w-[180px]">
               <Field label="Durée (min)">
                 <input
                   type="number"
@@ -185,16 +191,16 @@ export default function Check() {
               placeholder="9 000"
               value={steps}
               onChange={(e) => setSteps(e.target.value)}
-              className={inputCls + ' max-w-[160px]'}
+              className={inputCls + ' max-w-[180px]'}
             />
           </Field>
         </div>
 
         {/* Nutrition */}
-        <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 space-y-4 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
+        <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-6 py-6 space-y-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
           <SectionHeader title="Nutrition" />
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <Field label="Calories (kcal)">
+            <Field label="Calories">
               <input type="number" placeholder="2850" value={calories} onChange={(e) => setCalories(e.target.value)} className={inputCls} />
             </Field>
             <Field label="Protéines (g)">
@@ -210,21 +216,21 @@ export default function Check() {
         </div>
 
         {/* Ressenti */}
-        <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 space-y-4 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
+        <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-6 py-6 space-y-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
           <SectionHeader title="Ressenti" />
           <Field label="Fatigue (1 = aucune · 5 = épuisé)">
             <ScaleInput value={fatigue} onChange={setFatigue} />
           </Field>
-          <Field label="Sommeil la nuit passée (1 = très mauvais · 5 = excellent)">
+          <Field label="Sommeil (1 = très mauvais · 5 = excellent)">
             <ScaleInput value={sommeil} onChange={setSommeil} />
           </Field>
         </div>
 
         <button
           type="submit"
-          className="w-full bg-yellow-400 text-[#07090f] font-bold text-sm py-3 rounded-2xl hover:bg-yellow-300 transition-all duration-200 tracking-wide"
+          className="w-full bg-yellow-400 text-[#07090f] font-bold text-sm py-3.5 rounded-2xl hover:bg-yellow-300 transition-all duration-200 tracking-wider"
         >
-          Valider le check
+          Valider le check du soir
         </button>
       </form>
 
