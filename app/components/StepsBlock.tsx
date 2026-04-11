@@ -21,19 +21,19 @@ export default function StepsBlock({ stepsDuJour, moyenne7j }: Props) {
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-5">
         <div>
-          <p className="text-xs text-[#8892a4] mb-1">Aujourd'hui</p>
+          <p className="text-[11px] font-semibold text-[#8892a4] uppercase tracking-widest mb-1.5">Aujourd'hui</p>
           <p className="text-xl font-bold text-yellow-400">{stepsDuJour.toLocaleString('fr-FR')}</p>
         </div>
         <div>
-          <p className="text-xs text-[#8892a4] mb-1">Moyenne 7j</p>
+          <p className="text-[11px] font-semibold text-[#8892a4] uppercase tracking-widest mb-1.5">Moyenne 7j</p>
           <p className="text-xl font-bold text-[#e8eaf0]">{moyenne7j.toLocaleString('fr-FR')}</p>
         </div>
         <div>
-          <p className="text-xs text-[#8892a4] mb-1">Objectif</p>
+          <p className="text-[11px] font-semibold text-[#8892a4] uppercase tracking-widest mb-1.5">Objectif</p>
           <p className="text-xl font-bold text-[#e8eaf0]">{OBJECTIF.toLocaleString('fr-FR')}</p>
         </div>
         <div>
-          <p className="text-xs text-[#8892a4] mb-1">Écart</p>
+          <p className="text-[11px] font-semibold text-[#8892a4] uppercase tracking-widest mb-1.5">Écart</p>
           <p className={`text-xl font-bold ${atteint ? 'text-yellow-400' : 'text-[#8892a4]'}`}>{ecartStr}</p>
         </div>
       </div>
