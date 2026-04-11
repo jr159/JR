@@ -22,7 +22,10 @@ export default function Health() {
       <PageHeader title="Health" subtitle="Dernière prise de sang" />
 
       {/* ── ÉTAT GLOBAL ───────────────────────────── */}
-      <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl overflow-hidden shadow-[0_4px_32px_rgba(0,0,0,0.5)]">
+      <div
+        className="bg-gradient-to-br from-[#0d1526] to-[#090e1a] border border-[#1c2e4a] rounded-2xl overflow-hidden"
+        style={{ boxShadow: '0 4px 40px rgba(0,0,0,0.6), 0 0 80px rgba(250,204,21,0.05)' }}
+      >
         <div className="px-5 pt-5 pb-3">
           <p className="text-[11px] font-semibold text-[#4a5872] uppercase tracking-widest">
             État global · {sortedMarkers.length} marqueurs analysés
