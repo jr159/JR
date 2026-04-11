@@ -38,7 +38,7 @@ const Toggle = ({
           key={opt}
           type="button"
           onClick={() => onChange(opt === 'Oui')}
-          className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 border ${
+          className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 border ${
             active
               ? 'bg-yellow-400 text-[#07090f] border-yellow-400'
               : 'bg-[#07090f] text-[#8892a4] border-[#1c2e4a] hover:text-[#e8eaf0] hover:border-[#2a4060]'
@@ -66,7 +66,7 @@ const ScaleInput = ({
         key={n}
         type="button"
         onClick={() => onChange(n)}
-        className={`w-9 h-9 rounded-xl text-sm font-bold transition-all duration-200 border ${
+        className={`w-9 h-9 rounded-xl text-sm font-bold transition-all duration-300 border ${
           value === n
             ? 'bg-yellow-400 text-[#07090f] border-yellow-400'
             : 'bg-[#07090f] text-[#8892a4] border-[#1c2e4a] hover:border-[#2a4060] hover:text-[#e8eaf0]'
@@ -116,7 +116,10 @@ export default function Check() {
         className="space-y-4"
       >
         {/* Corps */}
-        <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-6 py-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
+        <div
+          className="bg-gradient-to-br from-[#0d1526] to-[#090e1a] border border-[#1c2e4a] rounded-2xl px-6 py-5"
+          style={{ boxShadow: '0 4px 32px rgba(0,0,0,0.5), 0 0 60px rgba(250,204,21,0.04)' }}
+        >
           <div className="flex items-center justify-between gap-6">
             <div>
               <SectionHeader title="Corps" />
@@ -228,7 +231,7 @@ export default function Check() {
 
         <button
           type="submit"
-          className="w-full bg-yellow-400 text-[#07090f] font-bold text-sm py-3.5 rounded-2xl hover:bg-yellow-300 transition-all duration-200 tracking-wider"
+          className="w-full bg-yellow-400 text-[#07090f] font-bold text-sm py-3.5 rounded-2xl hover:bg-yellow-300 transition-all duration-300 tracking-wider"
         >
           Valider le check du soir
         </button>

@@ -15,7 +15,10 @@ export default function Nutrition() {
       <PageHeader title="Nutrition" subtitle="Moyennes de la semaine" />
 
       {/* ── HERO ──────────────────────────────────── */}
-      <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl shadow-[0_4px_32px_rgba(0,0,0,0.5)] overflow-hidden">
+      <div
+        className="bg-gradient-to-br from-[#0d1526] to-[#090e1a] border border-[#1c2e4a] rounded-2xl overflow-hidden"
+        style={{ boxShadow: '0 4px 40px rgba(0,0,0,0.6), 0 0 80px rgba(250,204,21,0.05)' }}
+      >
         <div className="grid grid-cols-1 sm:grid-cols-5 divide-y sm:divide-y-0 sm:divide-x divide-[#1c2e4a]">
 
           {/* Calories — col 3/5 */}
