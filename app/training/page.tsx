@@ -75,7 +75,7 @@ export default function Training() {
                 Tonnage hebdo
               </p>
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-bold text-[#e8eaf0] tracking-tight">
+                <span className="text-3xl font-bold text-[#e8eaf0] tracking-tight leading-none">
                   {trainingSummary.tonnage}
                 </span>
                 <span className="text-sm text-[#4a5872]">kg</span>
@@ -89,7 +89,7 @@ export default function Training() {
                 Durée moyenne
               </p>
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-bold text-[#e8eaf0] tracking-tight">
+                <span className="text-3xl font-bold text-[#e8eaf0] tracking-tight leading-none">
                   {trainingSummary.dureeMoyenne}
                 </span>
                 <span className="text-sm text-[#4a5872]">min / séance</span>

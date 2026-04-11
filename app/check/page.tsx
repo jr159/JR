@@ -105,7 +105,7 @@ export default function Check() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       <PageHeader title="Check du soir" subtitle="Saisie quotidienne" />
 
       <form
