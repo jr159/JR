@@ -22,34 +22,29 @@ export default function Health() {
       <PageHeader title="Health" subtitle="Dernière prise de sang" />
 
       {/* ── ÉTAT GLOBAL ───────────────────────────── */}
-      <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-4 flex items-center justify-between gap-4 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
-        <div>
-          <p className="text-[11px] font-semibold text-[#4a5872] uppercase tracking-widest mb-1">
-            État global
-          </p>
-          <p className="text-sm font-medium text-[#e8eaf0]">
-            {counts.normal} marqueur{counts.normal > 1 ? 's' : ''} normaux
-            {counts.bas > 0 && <span className="text-yellow-400"> · {counts.bas} à surveiller</span>}
-            {counts.élevé > 0 && <span className="text-red-400"> · {counts.élevé} élevé</span>}
+      <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl overflow-hidden shadow-[0_4px_32px_rgba(0,0,0,0.5)]">
+        <div className="px-5 pt-5 pb-3">
+          <p className="text-[11px] font-semibold text-[#4a5872] uppercase tracking-widest">
+            État global · {sortedMarkers.length} marqueurs analysés
           </p>
         </div>
-        <div className="flex items-center gap-2 shrink-0 flex-wrap justify-end">
-          {counts.élevé > 0 && (
-            <span className="flex items-center gap-1.5 text-[11px] font-bold text-red-400 bg-red-400/10 border border-red-400/20 px-2.5 py-1 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0" />
-              {counts.élevé} élevé
-            </span>
-          )}
-          {counts.bas > 0 && (
-            <span className="flex items-center gap-1.5 text-[11px] font-bold text-yellow-400 bg-yellow-400/10 border border-yellow-400/20 px-2.5 py-1 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 shrink-0" />
-              {counts.bas} bas
-            </span>
-          )}
-          <span className="flex items-center gap-1.5 text-[11px] font-bold text-green-400 bg-green-400/10 border border-green-400/20 px-2.5 py-1 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-400 shrink-0" />
-            {counts.normal} normal
-          </span>
+        <div className="grid grid-cols-3 divide-x divide-[#1c2e4a] border-t border-[#1c2e4a]">
+          {[
+            { label: 'Élevé',  count: counts.élevé,  dot: 'bg-red-400',    active: 'text-red-400',    sub: counts.élevé > 0  ? 'à corriger'   : 'aucun' },
+            { label: 'Bas',    count: counts.bas,    dot: 'bg-yellow-400', active: 'text-yellow-400', sub: counts.bas > 0    ? 'à surveiller' : 'aucun' },
+            { label: 'Normal', count: counts.normal, dot: 'bg-green-400',  active: 'text-green-400',  sub: 'dans la cible' },
+          ].map((cell) => (
+            <div key={cell.label} className="px-5 py-5 flex flex-col gap-1.5">
+              <div className="flex items-center gap-1.5 mb-0.5">
+                <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${cell.dot}`} />
+                <span className="text-[10px] font-semibold text-[#8892a4] uppercase tracking-widest">{cell.label}</span>
+              </div>
+              <span className={`text-3xl font-bold tracking-tight leading-none ${cell.count > 0 ? cell.active : 'text-[#2a4060]'}`}>
+                {cell.count}
+              </span>
+              <span className="text-[11px] text-[#4a5872]">{cell.sub}</span>
+            </div>
+          ))}
         </div>
       </div>
 
