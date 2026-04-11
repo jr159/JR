@@ -17,9 +17,9 @@ const statusStyle: Record<Status, { badge: string; dot: string; value: string; b
 export default function HealthMarkerCard({ label, value, unit, status, note }: Props) {
   const s = statusStyle[status]
   return (
-    <div className={`bg-[#0d1526] border ${s.border} rounded-2xl px-5 py-5 flex flex-col gap-3 hover:border-[#2a4060] transition-all duration-200 shadow-[0_2px_16px_rgba(0,0,0,0.4)]`}>
+    <div className={`bg-[#0d1526] border ${s.border} rounded-2xl px-5 py-5 flex flex-col gap-3.5 hover:border-[#2a4060] transition-all duration-200 shadow-[0_2px_16px_rgba(0,0,0,0.4)]`}>
       <div className="flex items-start justify-between gap-2">
-        <span className="text-[11px] font-semibold text-[#8892a4] uppercase tracking-wide">{label}</span>
+        <span className="text-[11px] font-semibold text-[#9aa3b4] uppercase tracking-[0.08em]">{label}</span>
         <span className={`flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full shrink-0 ${s.badge}`}>
           <span className={`w-1.5 h-1.5 rounded-full ${s.dot}`} />
           {status}
@@ -27,9 +27,9 @@ export default function HealthMarkerCard({ label, value, unit, status, note }: P
       </div>
       <div className="flex items-baseline gap-1.5">
         <span className={`text-3xl font-bold tracking-tight leading-none ${s.value}`}>{value}</span>
-        <span className="text-xs text-[#4a5872]">{unit}</span>
+        <span className="text-xs font-medium text-[#5f6d86]">{unit}</span>
       </div>
-      <p className="text-xs text-[#8892a4] leading-relaxed">{note}</p>
+      <p className="text-[12px] text-[#8f98aa] leading-relaxed">{note}</p>
     </div>
   )
 }
