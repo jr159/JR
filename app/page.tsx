@@ -57,19 +57,22 @@ export default function Dashboard() {
 
             {/* Stats droite — 2/5 */}
             <div className="sm:col-span-2 flex flex-col divide-y divide-[#1c2e4a]">
-              <div className="px-6 py-6 flex flex-col gap-2 flex-1">
+              <div className="px-6 py-6 flex flex-col gap-1.5 flex-1">
                 <p className="text-xs font-semibold text-[#8892a4] uppercase tracking-widest">Tendance</p>
-                <p className={`text-2xl font-bold ${evoColor}`}>
+                <p className={`text-3xl font-bold tracking-tight leading-none ${evoColor}`}>
                   {isDown ? 'En baisse' : 'En hausse'}
                 </p>
-                <p className={`text-sm ${evoColor}`}>
+                <p className={`text-[11px] ${evoColor}`}>
                   {isDown ? 'Bonne trajectoire — maintenir.' : 'Ajuster le déficit.'}
                 </p>
               </div>
-              <div className="px-6 py-6 flex flex-col gap-2 flex-1">
+              <div className="px-6 py-6 flex flex-col gap-1.5 flex-1">
                 <p className="text-xs font-semibold text-[#8892a4] uppercase tracking-widest">Déficit estimé</p>
-                <p className="text-2xl font-bold text-yellow-400">−350</p>
-                <p className="text-sm text-[#4a5872]">kcal / jour en moyenne</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-bold text-yellow-400 tracking-tight leading-none">−350</span>
+                  <span className="text-sm text-[#4a5872]">kcal</span>
+                </div>
+                <p className="text-[11px] text-[#4a5872]">par jour en moyenne</p>
               </div>
             </div>
 
