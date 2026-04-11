@@ -13,7 +13,7 @@ export default function WeeklyNotes({ notes }: Props) {
       <ul className="divide-y divide-[#1c2e4a]">
         {notes.map((note, i) => (
           <li key={i} className="flex gap-3 py-3 first:pt-1 last:pb-1">
-            <span className="text-yellow-400 select-none shrink-0 mt-0.5">—</span>
+            <span className="text-yellow-400 select-none shrink-0 mt-0.5 text-sm">◆</span>
             <span className="text-sm text-[#e8eaf0] leading-relaxed">{note}</span>
           </li>
         ))}

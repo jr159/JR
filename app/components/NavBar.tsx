@@ -34,7 +34,7 @@ export default function NavBar() {
                 href={link.href}
                 className={`
                   px-3 py-1.5 rounded-xl text-sm font-medium whitespace-nowrap
-                  transition-all duration-150 border
+                  transition-all duration-300 border
                   ${active
                     ? 'bg-yellow-400/10 text-yellow-400 border-yellow-400/25 font-semibold'
                     : 'text-[#8892a4] border-transparent hover:text-[#c8cdd6] hover:bg-[#0d1526] hover:border-[#1c2e4a]'

@@ -79,7 +79,7 @@ export default function CheckResult({ depense, apport, steps }: Props) {
           },
         ].map((item) => (
           <div key={item.label} className="bg-[#07090f] border border-[#1c2e4a] rounded-xl px-4 py-4">
-            <p className="text-[10px] text-[#8892a4] mb-1.5 uppercase tracking-wide">{item.label}</p>
+            <p className="text-[11px] font-semibold text-[#8892a4] uppercase tracking-widest mb-1.5">{item.label}</p>
             <p className={`text-xl font-bold tabular-nums leading-none ${item.color}`}>{item.val}</p>
           </div>
         ))}
