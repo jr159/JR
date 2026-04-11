@@ -1,3 +1,10 @@
+export const projectionHero = {
+  poidsDepart: 87.0,
+  poidsObjectif: 78.0,
+  echeance: 'fin juillet 2026',
+  delaiMois: 3,
+}
+
 export const projectionKpis = [
   { label: 'Poids actuel', value: '84.2', unit: 'kg' },
   { label: 'Dans 1 mois (réaliste)', value: '82.2', unit: 'kg' },
