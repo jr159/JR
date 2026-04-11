@@ -13,6 +13,9 @@ export default function MiniSparkline({
 }: Props) {
   if (data.length < 2) return null
 
+  // Unique per-instance ID prevents gradient conflicts when multiple sparklines are on the same page
+  const gradientId = `spark-fill-${color.replace('#', '')}`
+
   const W = 400 // viewBox width — SVG scales responsively
   const H = height
   const padX = 2
@@ -47,14 +50,14 @@ export default function MiniSparkline({
       preserveAspectRatio="none"
     >
       <defs>
-        <linearGradient id="spark-fill" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor={color} stopOpacity="0.18" />
           <stop offset="100%" stopColor={color} stopOpacity="0" />
         </linearGradient>
       </defs>
 
       {/* Area fill */}
-      <path d={areaPath} fill="url(#spark-fill)" />
+      <path d={areaPath} fill={`url(#${gradientId})`} />
 
       {/* Line */}
       <path
