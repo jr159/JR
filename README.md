@@ -113,6 +113,23 @@ Pas de PR obligatoire pour ce projet solo — merge direct dans `main` suffisant
 
 ---
 
+## Directives
+
+Format : **`[type] zone — action`**
+
+```
+[ui]    Dashboard — renforcer le contraste du hero
+[fix]   Check — le formulaire ne remet pas les champs à zéro
+[tech]  Projection — extraire splitVal dans un helper partagé
+[add]   Training — ajouter un champ "note de séance" dans les données
+```
+
+Types : `ui` · `fix` · `tech` · `add` · `doc` · `data`
+
+Une directive = une tâche. Pas de multi-objectifs dans la même ligne.
+
+---
+
 ## Préparation n8n
 
 n8n sera utilisé plus tard pour orchestrer les agents IA automatiquement. Rien n'est encore branché — cette section décrit le flux cible.
