@@ -68,7 +68,7 @@ export default function CheckResult({ depense, apport, steps }: Props) {
     <div className="bg-[#0d1526] border border-[#1c2e4a] rounded-2xl px-5 py-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)] space-y-4">
       <SectionHeader title="Résultat du soir" />
 
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-2 sm:gap-3">
         {[
           { label: 'Dépense', val: `${depense} kcal`, color: 'text-yellow-400' },
           { label: 'Apport', val: apport > 0 ? `${apport} kcal` : '—', color: 'text-[#e8eaf0]' },
@@ -78,9 +78,9 @@ export default function CheckResult({ depense, apport, steps }: Props) {
             color: apport === 0 ? 'text-[#4a5872]' : deficit <= 0 ? 'text-green-400' : 'text-orange-400',
           },
         ].map((item) => (
-          <div key={item.label} className="bg-[#07090f] border border-[#1c2e4a] rounded-xl px-4 py-4">
+          <div key={item.label} className="bg-[#07090f] border border-[#1c2e4a] rounded-xl px-3 py-3 sm:px-4 sm:py-4">
             <p className="text-[11px] font-semibold text-[#8892a4] uppercase tracking-widest mb-1.5">{item.label}</p>
-            <p className={`text-xl font-bold tabular-nums leading-none ${item.color}`}>{item.val}</p>
+            <p className={`text-base sm:text-xl font-bold tabular-nums leading-none ${item.color}`}>{item.val}</p>
           </div>
         ))}
       </div>

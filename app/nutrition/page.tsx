@@ -91,7 +91,7 @@ export default function Nutrition() {
       {/* ── INDICATEURS SECONDAIRES ───────────────── */}
       <section className="space-y-4">
         <SectionDivider>Indicateurs secondaires</SectionDivider>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {nutritionSecondary.map((s) => (
             <KpiCard key={s.label} label={s.label} value={s.value} unit={s.unit} accent={false} />
           ))}
