@@ -121,7 +121,7 @@ export default function Projection() {
             </div>
 
             <div className="bg-[#07090f] border border-[#1c2e4a] rounded-xl px-4 py-3">
-              <p className="text-[10px] text-[#4a5872] uppercase tracking-wide mb-1.5">Dans 3 mois</p>
+              <p className="text-[11px] text-[#4a5872] uppercase tracking-widest mb-1.5">Dans 3 mois</p>
               <p className="text-2xl font-bold text-[#e8eaf0] tabular-nums leading-none">
                 {splitVal(prudentOutcome).num}{' '}
                 <span className="text-sm font-normal text-[#4a5872]">{splitVal(prudentOutcome).unit}</span>
@@ -148,7 +148,7 @@ export default function Projection() {
             </div>
 
             <div className="bg-yellow-400/5 border border-yellow-400/15 rounded-xl px-4 py-3">
-              <p className="text-[10px] text-yellow-400/60 uppercase tracking-wide mb-1.5">Dans 3 mois</p>
+              <p className="text-[11px] text-yellow-400/60 uppercase tracking-widest mb-1.5">Dans 3 mois</p>
               <p className="text-2xl font-bold text-yellow-400 tabular-nums leading-none">
                 {splitVal(realisteOutcome).num}{' '}
                 <span className="text-sm font-normal text-yellow-400/60">{splitVal(realisteOutcome).unit}</span>
