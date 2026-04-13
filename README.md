@@ -56,15 +56,60 @@ npm run build     # Build de production
 
 ---
 
-## Workflow
+## Workflow Git
+
+### Branches
+
+| Branche | Rôle |
+|---|---|
+| `main` | Production — toujours stable, déployé automatiquement sur Vercel |
+| `feat/<sujet>` | Nouvelle fonctionnalité (ex: `feat/nutrition-chart`) |
+| `fix/<sujet>` | Correction ciblée (ex: `fix/mobile-kpi-overflow`) |
+| `chore/<sujet>` | Maintenance, config, docs (ex: `chore/readme`) |
+
+Règle : **ne jamais committer directement sur `main`**.
+
+---
+
+### Commits
+
+Format : `<type>: <description courte>`
 
 ```
-feature branch  →  push  →  merge main  →  Vercel (auto-deploy)
+feat: ajout graphique calories hebdo
+fix: correction overflow KPI mobile
+chore: mise à jour README
+style: harmonisation espacements cartes
 ```
 
-- Développer sur une branche dédiée (`feat/...` ou `claude/...`)
-- Merger dans `main` une fois la feature stable
-- Vercel déploie automatiquement depuis `main`
+Types valides : `feat` · `fix` · `style` · `chore` · `docs` · `refactor`
+
+- Une ligne, en français ou en anglais, cohérent dans le projet
+- Pas de commit fourre-tout ("misc changes", "wip", etc.)
+
+---
+
+### Intégration feature → main
+
+```bash
+# 1. Créer et basculer sur la branche de travail
+git checkout -b feat/<sujet>
+
+# 2. Travailler, committer au fil des étapes
+git add <fichiers>
+git commit -m "feat: ..."
+
+# 3. Pousser la branche
+git push -u origin feat/<sujet>
+
+# 4. Merger dans main une fois stable
+git checkout main
+git pull origin main
+git merge feat/<sujet>
+git push origin main
+```
+
+Pas de PR obligatoire pour ce projet solo — merge direct dans `main` suffisant.
 
 ---
 
