@@ -71,7 +71,10 @@ export default function Health() {
       {/* ── POINTS D'ATTENTION ────────────────────── */}
       <section className="space-y-4">
         <SectionDivider>Points d'attention</SectionDivider>
-        <div className="bg-[#0d1526] border border-yellow-400/20 rounded-2xl px-5 py-5 shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
+        <div
+          className="bg-[#0d1526] border border-yellow-400/20 rounded-2xl px-5 py-5"
+          style={{ boxShadow: '0 2px 16px rgba(0,0,0,0.4), 0 0 40px rgba(250,204,21,0.06)' }}
+        >
           <ul className="divide-y divide-[#1c2e4a]">
             {healthReadout.map((line, i) => (
               <li key={i} className="flex gap-3 py-3 first:pt-1 last:pb-1">

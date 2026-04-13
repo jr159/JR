@@ -34,7 +34,7 @@ export default function SessionQuality({ sessions }: Props) {
                   {s.score} / 5
                 </span>
               </div>
-              <div className="h-1 bg-[#07090f] rounded-full overflow-hidden border border-[#1c2e4a] mb-2.5">
+              <div className="h-1.5 bg-[#07090f] rounded-full overflow-hidden border border-[#1c2e4a] mb-2.5">
                 <div
                   className={`h-full rounded-full transition-all duration-500 ${style.bar}`}
                   style={{ width: `${(s.score / 5) * 100}%` }}
