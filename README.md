@@ -113,6 +113,38 @@ Pas de PR obligatoire pour ce projet solo — merge direct dans `main` suffisant
 
 ---
 
+## Préparation n8n
+
+n8n sera utilisé plus tard pour orchestrer les agents IA automatiquement. Rien n'est encore branché — cette section décrit le flux cible.
+
+### Flux cible
+
+```
+Directive (chat / webhook)
+  → n8n classifie la tâche (UI, data, doc, fix…)
+  → n8n sélectionne l'agent concerné (Claude / Codex / Gemini)
+  → l'agent produit les modifications
+  → Claude intègre, committe et pousse sur la branche
+  → merge dans main
+  → Vercel déploie automatiquement
+```
+
+### Ce qui est déjà prêt
+
+- Structure de branches claire (`main` / `feat/` / `fix/`)
+- Rôles des agents définis (voir section "Système d'agents IA")
+- Règle : un seul agent publie (Claude)
+- Déploiement automatique Vercel depuis `main`
+
+### Ce qui sera ajouté plus tard
+
+- Webhook d'entrée n8n pour recevoir les directives
+- Nœud de classification de tâche (type + agent cible)
+- Connexion n8n → API Claude / Codex / Gemini
+- Nœud de validation avant merge dans `main`
+
+---
+
 ## Système d'agents IA
 
 Plusieurs agents peuvent intervenir sur le projet. Chacun a un rôle distinct.
