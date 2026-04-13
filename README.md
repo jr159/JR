@@ -113,6 +113,26 @@ Pas de PR obligatoire pour ce projet solo — merge direct dans `main` suffisant
 
 ---
 
+## Système d'agents IA
+
+Plusieurs agents peuvent intervenir sur le projet. Chacun a un rôle distinct.
+
+| Agent | Rôle |
+|---|---|
+| **Claude** | Implémentation principale — code, UI, refactoring, documentation, commits, push |
+| **Codex** | Génération de code ciblée — snippets, fonctions isolées, suggestions techniques |
+| **Gemini** | Analyse, relecture, suggestions — jamais d'écriture directe dans le repo |
+
+### Règles
+
+- **Un seul agent publie** : Claude est le seul agent à committer et pousser sur le repo
+- **Codex et Gemini** produisent des suggestions ; Claude décide de les intégrer ou non
+- **Pas de travail en parallèle** sur les mêmes fichiers — un agent à la fois par zone
+- **Toute modification passe par une branche** (`feat/`, `fix/`, etc.) avant `main`
+- Les agents ne modifient pas les données dans `lib/data/` sans validation explicite
+
+---
+
 ## Contribuer
 
 - Données mockées uniquement dans `lib/data/` — ne pas mélanger avec les composants
