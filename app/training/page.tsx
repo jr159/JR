@@ -102,7 +102,7 @@ export default function Training() {
       {/* ── VOLUME & CHARGE ───────────────────────── */}
       <section className="space-y-4">
         <SectionDivider>Volume & charge</SectionDivider>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {trainingStats.map((s) => (
             <KpiCard key={s.label} label={s.label} value={s.value} unit={s.unit} accent={false} />
           ))}
